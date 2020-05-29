@@ -41,5 +41,21 @@ export default {
 				Authorization: `Bearer ${ token }`
 			}
 		});
+	},
+
+	uploadImages(images, token) {
+		// upload image: https://api.imgur.com/3/image (note: the api only upload one image)
+		// use Array.from to turn images into real array and use map to iterate all the images
+		const promises = Array.from(images).map(image => {
+			const formData = new FormData(); // attach reference to the real image
+			formData.append('image', image); // 'image' is the key API required
+			return axios.post(`${ ROOT_URL }/3/image`, formData, {
+				headers: {
+					Authorization: `Bearer ${ token }`
+				}
+			});
+		});
+
+		return Promise.all(promises);
 	}
 }

@@ -1,13 +1,25 @@
 <template>
 	<div class="dropper">
-		<input type="file" name="">
+		<!-- accept multiple files upload but only image files -->
+		<input 
+			type="file" 
+			@change="uploadImages($event.target.files)" 
+			multiple
+			accept="image/*"
+		/>
 		<span>Drag and drop image here to upload</span>
 	</div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
-	name: 'Upload'
+	name: 'Upload',
+
+	methods: {
+		...mapActions(['uploadImages'])
+	}
 }
 </script>
 
