@@ -1,4 +1,6 @@
 # Image Storage & Upload
+<img src="/vue-image-upload/demo/img-upload.gif">
+
 ## Run the app
 ```
 cd vue-image-upload
